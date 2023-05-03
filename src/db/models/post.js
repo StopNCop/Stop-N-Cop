@@ -20,6 +20,19 @@ class Post {
 			return null;
 		}
 	}
+
+	static async create(user_id, name, link, city, price) {
+		  try {
+		    const query = `INSERT INTO posts (user_id, name, link, city, price)
+		      VALUES (?, ?, ?, ?, ?) RETURNING *`;
+		    const { rows: [posts] } = await knex.raw(query, [user_id, name, link, city, price]);
+		    return posts;
+		  }
+		  catch(err){
+		    console.error(err);
+		    return null;
+		  }
+		}
 }
 
 module.exports = Post

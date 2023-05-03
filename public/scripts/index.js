@@ -45,7 +45,7 @@ const main = async () => {
     console.log(name, city, price, link)
 
     const options = getFetchOptions({ name, city, price, link});
-    const [res, _err] = await handleFetch('/users/listing', options);
+    const [res, _err] = await handleFetch('/posts', options);
     console.log(res)
     displayListing(res);
 
