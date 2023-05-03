@@ -4,16 +4,18 @@ const { hashPassword, isValidPassword } = require('../../utils/auth-utils');
 class User {
   #passwordHash = null;
 
-  constructor({ id, username, password_hash }) {
+  constructor({ id, username, password_hash, email }) {
     this.id = id;
     this.username = username;
     this.#passwordHash = password_hash;
+    this.email = email;
   }
 
   static async list() {
     try {
       const query = 'SELECT * FROM users';
       const { rows } = await knex.raw(query);
+      console.log(rows)
       return rows.map((user) => new User(user));
     } catch (err) {
       console.error(err);
@@ -82,6 +84,36 @@ class User {
   isValidPassword = async (password) => (
     isValidPassword(password, this.#passwordHash)
   );
+
+  static async createListing(user_id, name, link, city, price) {
+    try {
+      const query = `INSERT INTO posts (user_id, name, link, city, price)
+        VALUES (?, ?, ?, ?, ?) RETURNING *`;
+      const { rows: [listing] } = await knex.raw(query, [user_id, name, link, city, price]);
+      return listing;
+    }
+    catch(err){
+      console.error(err);
+      return null;
+    }
+  }
+
+  static async addToBookmarks(post_id, user_id) {
+    try {
+      const query = `INSERT INTO bookmarks (post_id, user_id)
+        VALUES (?, ?) RETURNING *`;
+      const { rows: [bookmarks] } = await knex.raw(query, [post_id, user_id]);
+      return bookmarks;
+    }
+    catch(err){
+      console.error(err);
+      return null;
+    }
+  }
 }
 
 module.exports = User;
+
+
+const user = User.list();
+console.log(user);
