@@ -9,7 +9,7 @@ module.exports = {
       port: process.env.PG_PORT || 5433,
       user: process.env.PG_USER || 'postgres',
       password: process.env.PG_PASS || 'postgres',
-      database: process.env.PG_DB || 'STOPNCOP',
+      database: process.env.PG_DB || 'stop_and_cop',
     },
     migrations: {
       directory: path.join(__dirname, 'src', 'db', 'migrations'),
