@@ -7,7 +7,6 @@ const login = require('./login');
 const logout = require('./logout');
 const showMe = require('./show-me');
 
-const createListing = require('./create-listing');
 
 module.exports = {
   list,
@@ -19,5 +18,4 @@ module.exports = {
   logout,
   showMe,
 
-  createListing,
 };

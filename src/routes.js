@@ -17,7 +17,6 @@ Router.get('/cookieCounter', (req, res) => {
 // Create
 Router.post('/users', userController.create);
 Router.post('/users/login', userController.login);
-Router.post('/users/listing', userController.createListing);
 
 // Read
 Router.get('/users', userController.list);
