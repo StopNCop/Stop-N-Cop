@@ -61,6 +61,16 @@ class Post {
 			return null;
 		}
 	};
+
+    static async destroy(id) {
+        try {
+            const result = await knex.raw( `DELETE FROM posts WHERE id = ? RETURNING *`, [id]);
+            return result;
+        } catch (err) {
+            console.error(err);
+            return null;
+                }
+    }
 }
 
 module.exports = Post
