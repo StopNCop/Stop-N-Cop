@@ -28,7 +28,7 @@ const main = async () => {
   const user = await fetchLoggedInUser();
   setNav(!!user);
 
-  const [secret, _err] = await handleFetch('/api/logged-in-secret');
+  const [secret, _err] = await handleFetch('/logged-in-secret');
   console.log('secret, _err:', secret, _err);
   if (secret) {
     document.querySelector('#secret-message').textContent = secret.msg;
@@ -45,7 +45,7 @@ const main = async () => {
     console.log(name, city, price, link)
 
     const options = getFetchOptions({ name, city, price, link});
-    const [res, _err] = await handleFetch('/api/users/listing', options);
+    const [res, _err] = await handleFetch('/users/listing', options);
     console.log(res)
     displayListing(res);
 

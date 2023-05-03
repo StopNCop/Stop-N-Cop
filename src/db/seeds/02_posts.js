@@ -13,6 +13,7 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   // await knex('posts').del()
   await knex('posts').insert([
-    {id: 1000, user_id: 1, name: "Nikes", link: "", city: "BK", price: 100},
+    {user_id: 1, name: "Nikes", link: "", city: "BK", price: 100},
+    {user_id: 1, name: "Yeezys", link: "", city: "Bronx", price: 300},
   ]);
 };

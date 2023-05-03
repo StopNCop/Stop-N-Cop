@@ -10,8 +10,7 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  // await knex('bookmarks').del()
   await knex('bookmarks').insert([
-    {id: 1000, post_id: 1000, user_id: 2},
+    {post_id: 1, user_id: 2},
   ]);
 };

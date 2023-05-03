@@ -4,7 +4,9 @@ const User = require('../models/user');
  * @returns { Promise<void> }
  */
 exports.seed = async (knex) => {
-  // await User.deleteAll();
+  await knex('bookmarks').del()
+  await knex('posts').del()
+  await knex('users').del()
   await User.create('cool_cat', 'password1', 'email@email.com');
   await User.create('l33t-guy', 'password1', 'email@email.com');
 };
