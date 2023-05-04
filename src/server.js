@@ -5,6 +5,7 @@ const handleCookieSessions = require('./middleware/handle-cookie-sessions');
 const logRoutes = require('./middleware/log-routes');
 const routes = require('./routes');
 const postRoutes = require('./postRoutes')
+const bookmarkRoutes = require('./bookmarkRoutes');
 
 const app = express();
 
@@ -15,5 +16,6 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(routes);
 app.use(postRoutes);
+app.use(bookmarkRoutes);
 
 module.exports = app;

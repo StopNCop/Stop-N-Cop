@@ -15,7 +15,8 @@ const displayListing = (req) => {
   const price = document.createElement('p');
   const city = document.createElement('p');
   name.innerText = req.name;
-  link.src = req.link;
+  link.src = req.link || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCDIQR868dceA4mJKLxbS7-QIgaf3ppjc46cPF8KUkhQ&s;'
+  link.width = 300;
   price.innerText = req.price;
   city.innerText = req.city;
   divElement.append(name, link, price, city);
@@ -28,11 +29,8 @@ const main = async () => {
   const user = await fetchLoggedInUser();
   setNav(!!user);
 
-  const [secret, _err] = await handleFetch('/logged-in-secret');
-  console.log('secret, _err:', secret, _err);
-  if (secret) {
-    document.querySelector('#secret-message').textContent = secret.msg;
-  }
+  const [listings, _err] = await handleFetch('/posts');
+  listings.forEach(listing => displayListing(listing));
 
   const formElement = document.querySelector('form');
 
@@ -50,6 +48,8 @@ const main = async () => {
     displayListing(res);
 
   });
+
+
 };
 
 main();
