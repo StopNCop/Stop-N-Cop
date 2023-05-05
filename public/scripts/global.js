@@ -33,7 +33,7 @@ const signupAndLoginHandler = async (url, form) => {
 
 // READ USER
 const fetchLoggedInUser = async () => {
-  const [response, _err] = await handleFetch('/me', { credentials: 'include' });
+  const [response, _err] = await handleFetch('/api/me', { credentials: 'include' });
   return response;
 };
 
@@ -52,7 +52,7 @@ const updateUsernameHandler = async (form) => {
 
 // DELETE USER
 const logOutHandler = async () => {
-  const [_response, err] = await handleFetch('/users/logout', { method: 'DELETE' });
+  const [_response, err] = await handleFetch('/api/users/logout', { method: 'DELETE' });
   if (err) return alert('Something went wrong');
   window.location.assign('/');
 };
@@ -68,6 +68,7 @@ const setNav = (hasLoggedInUser) => {
   const loggedInNavHtml = `<ul>
     <li><a href="/">Home</a></li>
     <li><a href="./user.html">Profile</a></li>
+    <li><a href="./bookmarks.html">Bookmarks</a></li>
   </ul>`;
 
   const navHtml = hasLoggedInUser ? loggedInNavHtml : loggedOutNavHtml;
