@@ -14,8 +14,8 @@ app.use(handleCookieSessions);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-app.use(routes);
-app.use(postRoutes);
-app.use(bookmarkRoutes);
+app.use('/api', routes);
+app.use('/api',postRoutes);
+app.use('/api',bookmarkRoutes);
 
 module.exports = app;
