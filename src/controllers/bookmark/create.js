@@ -1,10 +1,11 @@
 const create = async (req, res) => {
 	const {
+		session,
 		db: { Bookmark },
-		body: { post_id, user_id },
+		body: { postId },
 	} = req;
-	
-	const bookmark = await Bookmark.create(post_id, user_id);
+	const userId = session.userId;
+	const bookmark = await Bookmark.create(postId, userId);
 	res.send(bookmark);
 };
 
