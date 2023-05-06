@@ -46,7 +46,10 @@ const main = async () => {
     e.preventDefault();
     const postContainer = e.target.parentNode;
     const postId = postContainer.getAttribute('data-listing-id');
-    console.log(postContainer.getAttribute('data-listing-id'));
+    const options = getFetchOptions({postId});
+    console.log(options)
+    const [res, _err] = await handleFetch('/api/bookmarks', options);
+    console.log(res)
   }))
 
   formElement.addEventListener('submit', async (e) => {
