@@ -1,11 +1,14 @@
-const destory = async (req, res) => {
+const destroy = async (req, res) => {
     const {
+        session,
         db: { Bookmark },
-        params: { id },
+        body: { postId },
      } = req;
-
-     const result = await Bookmark.destroy(Number(id));
+     
+     const userId = session.userId
+     console.log(postId)
+     const result = await Bookmark.destroy(userId, postId);
      res.sendStatus( result ? 204 : 404 );
 }
 
-module.exports = destory;
+module.exports = destroy;

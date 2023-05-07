@@ -10,25 +10,36 @@ const listingContainer = document.querySelector('#listing-container');
 
 const displayListing = (req) => {
   const divElement = document.createElement('div');
-  const name = document.createElement('p');
-  const link = document.createElement('img');
-  const price = document.createElement('p');
-  const city = document.createElement('p');
-  const bookmark = document.createElement('button');
+  // const name = document.createElement('p');
+  // const link = document.createElement('img');
+  // const price = document.createElement('p');
+  // const city = document.createElement('p');
+  // const username = document.createElement('p');
+  // const email = document.createElement('p');
 
 
-  name.innerText = req.name;
-  link.src = req.link || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCDIQR868dceA4mJKLxbS7-QIgaf3ppjc46cPF8KUkhQ&s;'
-  link.width = 300;
-  price.innerText = req.price;
-  city.innerText = req.city;
-  divElement.append(name, link, price, city);
-  const postId = req.id;
-  divElement.setAttribute('data-listing-id', postId);
-  bookmark.setAttribute('class', 'addBookmark')
 
-  bookmark.innerText = 'Bookmark'
-  divElement.append(bookmark);
+  let images = req.link || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCDIQR868dceA4mJKLxbS7-QIgaf3ppjc46cPF8KUkhQ&s;'
+  let names = req.name;
+  let prices = req.price;
+  let citys = req.city;
+  let postId = req.id;
+  let username = req.username;
+  let email = req.email;
+  divElement.class = 'col';
+
+   divElement.innerHTML = `<div class="card" data-listing-id = ${postId} style="width: 18rem;">
+  <img src=${images} class="card-img-top border-bottom border-dark h-25" alt="...">
+  <div class="card-body bg-body-secondary">
+    <h5 class="card-title">${names}</h5>
+    <p class="card-text">$${prices}</p>
+    <p class="card-text">${citys}</p>
+    <p class="card-text">Created By: ${username}</p>
+    <p class="card-text">Contact: ${email}</p>
+  </div>
+  <a href="#" class="btn btn-primary addBookmark bg-success">Add To Bookmark</a>
+</div>`
+
   listingContainer.append(divElement);
 }
 
