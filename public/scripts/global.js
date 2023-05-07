@@ -59,17 +59,49 @@ const logOutHandler = async () => {
 
 // Nav Helper
 const setNav = (hasLoggedInUser) => {
-  const loggedOutNavHtml = `<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="./create.html">Sign Up</a></li>
-    <li><a href="./login.html">Login</a></li>
-  </ul>`;
+  const loggedOutNavHtml = ` <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">STOP N COP</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./create.html">SIGN UP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./login.html">LOGIN</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>`;
 
-  const loggedInNavHtml = `<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="./user.html">Profile</a></li>
-    <li><a href="./bookmarks.html">Bookmarks</a></li>
-  </ul>`;
+  const loggedInNavHtml = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">STOP N COP</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./user.html">PROFILE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./bookmarks.html">BOOOKMARKS</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>`;
 
   const navHtml = hasLoggedInUser ? loggedInNavHtml : loggedOutNavHtml;
   document.querySelector('nav').innerHTML = navHtml;
